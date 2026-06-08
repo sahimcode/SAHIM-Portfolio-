@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sahim Visuals</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0a0a0a;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND IMAGE
+========================= */
+.hero-bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+}
+
+.hero-bg img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(0.35);
+}
+
+/* Dark overlay */
+.hero-bg::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.35);
+}
+
+/* =========================
+   SAKURA PETALS
+========================= */
+.sakura-container{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.petal{
+    position:absolute;
+    top:-60px;
+    width:18px;
+    height:18px;
+    background:#ffc0cb;
+    border-radius:70% 0 70% 0;
+    opacity:0.9;
+    animation:fall linear infinite;
+    box-shadow:0 0 8px rgba(255,192,203,.5);
+}
+
+.petal:nth-child(1){left:5%;animation-duration:8s;}
+.petal:nth-child(2){left:12%;animation-duration:10s;}
+.petal:nth-child(3){left:20%;animation-duration:12s;}
+.petal:nth-child(4){left:28%;animation-duration:9s;}
+.petal:nth-child(5){left:36%;animation-duration:11s;}
+.petal:nth-child(6){left:44%;animation-duration:13s;}
+.petal:nth-child(7){left:52%;animation-duration:8s;}
+.petal:nth-child(8){left:60%;animation-duration:10s;}
+.petal:nth-child(9){left:68%;animation-duration:12s;}
+.petal:nth-child(10){left:76%;animation-duration:9s;}
+.petal:nth-child(11){left:84%;animation-duration:11s;}
+.petal:nth-child(12){left:92%;animation-duration:13s;}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-60px) translateX(0) rotate(0deg);
+    }
+    50%{
+        transform:translateY(50vh) translateX(60px) rotate(180deg);
+    }
+    100%{
+        transform:translateY(110vh) translateX(-60px) rotate(360deg);
+    }
+}
+
+/* =========================
+   GLOBAL
+========================= */
+.section{
+    padding:50px 8%;
+    position:relative;
+    z-index:2;
+}
+
+h1{
+    font-size:64px;
+    letter-spacing:6px;
+    font-weight:800;
+}
+
+h2{
+    font-size:36px;
+    text-align:center;
+    margin-bottom:50px;
+    letter-spacing:2px;
+}
+
+p{
+    color:#ddd;
+}
+
+/* =========================
+   HERO
+========================= */
+ .hero{
+    min-height:60vh; /* was 100vh */
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+      }
+
+
+.subtitle{
+    margin-top:12px;
+    font-size:18px;
+}
+
+.buttons{
+    margin-top:40px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 34px;
+    border-radius:40px;
+    margin:10px;
+    font-weight:600;
+    text-decoration:none;
+    transition:.3s ease;
+}
+
+.whatsapp{
+    background:#25D366;
+    color:#000;
+}
+
+.portfolio{
+    background:#fff;
+    color:#000;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+/* =========================
+   FEATURED
+========================= */
+.featured-box{
+    max-width:750px;
+    margin:auto;
+    border-radius:20px;
+    overflow:hidden;
+    background:rgba(0,0,0,.25);
+    backdrop-filter:blur(12px);
+    box-shadow:0 30px 80px rgba(0,0,0,.6);
+}
+.featured-section{
+    padding-top:0px;
+}
+.featured-box img{
+    width:100%;
+    display:block;
+}
+
+/* =========================
+   GALLERY
+========================= */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.thumb{
+    position:relative;
+    border-radius:18px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s ease;
+}
+
+.overlay{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:20px;
+    background:linear-gradient(to top,rgba(0,0,0,.9),transparent);
+    font-weight:600;
+    opacity:0;
+    transition:.4s;
+}
+
+.thumb:hover img{
+    transform:scale(1.1);
+}
+
+.thumb:hover .overlay{
+    opacity:1;
+}
+
+/* =========================
+   PRICING
+========================= */
+.pricing{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+}
+
+.card{
+    width:280px;
+    padding:35px;
+    border-radius:20px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+    text-align:center;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    background:rgba(255,255,255,.12);
+}
+
+.price{
+    font-size:28px;
+    margin:15px 0;
+}
+
+.choose{
+    display:inline-block;
+    margin-top:15px;
+    background:#25D366;
+    padding:12px 25px;
+    border-radius:25px;
+    text-decoration:none;
+    color:black;
+    font-weight:600;
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact{
+    text-align:center;
+}
+
+.contact-btn{
+    margin-top:25px;
+    display:inline-block;
+    background:#25D366;
+    padding:16px 40px;
+    border-radius:40px;
+    font-weight:600;
+    text-decoration:none;
+    color:black;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer{
+    text-align:center;
+    padding:40px;
+    color:#aaa;
+    position:relative;
+    z-index:2;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media(max-width:768px){
+
+    h1{
+        font-size:42px;
+    }
+
+    h2{
+        font-size:28px;
+    }
+
+    .section{
+        padding:70px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND IMAGE -->
+<div class="hero-bg">
+    <img src="sh.jpg" alt="Background">
+</div>
+
+<!-- SAKURA PETALS -->
+<div class="sakura-container">
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+    <span class="petal"></span>
+</div>
+
+<!-- HERO -->
+<section class="section hero">
+    <h1>SAHIM VISUALS</h1>
+    <p class="subtitle">Designs That Get More Clicks</p>
+
+    <div class="buttons">
+        <a href="https://wa.me/919706227735" class="btn whatsapp">
+            Chat on WhatsApp
+        </a>
+
+        <a href="#portfolio" class="btn portfolio">
+            View Portfolio
+        </a>
+    </div>
+</section>
+
+<!-- FEATURED -->
+<section class="section featured-section">
+    <h2>FEATURED WORK</h2>
+
+    <div class="featured-box">
+        <img src="3.jpg" alt="Featured Work">
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="portfolio">
+    <h2>Portfolio Gallery</h2>
+
+    <div class="grid">
+
+        <div class="thumb">
+            <img src="6.jpg" alt="">
+            <div class="overlay">YouTube Thumbnail</div>
+        </div>
+<div class="thumb">
+            <img src="17.jpg" alt="">
+            <div class="overlay">Thumbnail Pack</div>
+        </div>
+
+        <div class="thumb">
+            <img src="18.jpg" alt="">
+            <div class="overlay">Gaming Poster</div>
+        </div>
+
+        <div class="thumb">
+            <img src="4.jpg" alt="">
+            <div class="overlay">Instagram Ad</div>
+        </div>
+
+        <div class="thumb">
+            <img src="2.jpg" alt="">
+            <div class="overlay">Brand Design</div>
+        </div>
+
+        <div class="thumb">
+            <img src="5.jpg" alt="">
+            <div class="overlay">Thumbnail Pack</div>
+        </div>
+
+        <div class="thumb">
+            <img src="1.jpg" alt="">
+            <div class="overlay">Creative Poster</div>
+        </div>
+
+    </div>
+</section>
+
+<!-- PRICING -->
+<section class="section">
+    <h2>Pricing</h2>
+
+    <div class="pricing">
+
+        <div class="card">
+            <h3>Basic</h3>
+            <div class="price">₹200</div>
+            <a href="https://wa.me/919706227735" class="choose">
+                Choose Plan
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Standard</h3>
+            <div class="price">₹500</div>
+            <a href="https://wa.me/919706227735" class="choose">
+                Choose Plan
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>Premium</h3>
+            <div class="price">₹1000</div>
+            <a href="https://wa.me/919706227735" class="choose">
+                Choose Plan
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact">
+    <h2>Let's Work Together</h2>
+    <p>Have a project in mind?</p>
+
+    <a href="https://wa.me/919706227735" class="contact-btn">
+        Chat on WhatsApp
+    </a>
+</section>
+
+<div class="footer">
+    © 2026 Sahim Visuals
+</div>
+
+</body>
+</html>
